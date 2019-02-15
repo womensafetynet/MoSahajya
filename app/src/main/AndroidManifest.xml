@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.vaibhav.mosahajya">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -17,13 +18,19 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".service.MyfirebaseInstanceService">
+        <service android:name=".MyfirebaseInstanceService">
 
             <intent-filter>
 
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"></action>
             </intent-filter>
+        </service>
 
+        <service android:name=".MyfirebaseMessageService">
+
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
+            </intent-filter>
         </service>
 
 

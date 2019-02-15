@@ -1,4 +1,4 @@
-package com.example.vaibhav.mosahajya.service;
+package com.example.vaibhav.mosahajya;
 
 
 import android.app.Notification;
@@ -10,7 +10,9 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.example.vaibhav.mosahajya.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -20,7 +22,7 @@ public class MyfirebaseInstanceService extends FirebaseMessagingService {
 
 
 
-
+    /*
 
     @Override
     public void onNewToken(String s) {
@@ -75,6 +77,16 @@ public class MyfirebaseInstanceService extends FirebaseMessagingService {
 
         notificationManager.notify(new Random().nextInt(),notificationBuilder.build());
 
+    */
+
+    //private static final String REG_TOKEN = "REG_TOKEN";
+
+    @Override
+    public void onNewToken(String s) {
+        super.onNewToken(s);
+
+
+        //Log.d(REG_TOKEN,recent_token);
 
     }
 }

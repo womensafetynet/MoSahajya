@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
@@ -20,28 +21,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
 
-                        if (!task.isSuccessful()){
+                String mtoken = instanceIdResult.getToken();
+                Log.d("tokenmilgya",mtoken);
 
-                            Log.w("getinstacefailed",task.getException());
-                            return;
-                        }
-
-                        String token = task.getResult().getToken();
-
-                        String mssg = "helpme !!";
-
-                        Log.d("instacetoken",mssg);
-
-                        Toast.makeText(getApplicationContext(),"mssg",Toast.LENGTH_LONG).show();
-
-                    }
-                });
+            }
+        });
     }
-
-
 }
